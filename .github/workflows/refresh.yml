@@ -1,0 +1,23 @@
+name: Daily Kaggle Refresh
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 9 AM UTC daily
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: sports-betting-ml
+          environment-file: environment.yml
+          auto-activate-base: false
+
+      - name: Run refresh script
+        run: |
+          python src/data/refresh_data.py

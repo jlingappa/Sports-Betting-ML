@@ -14,3 +14,9 @@ models/
 
 # OS
 .DS_Store
+
+# Ignore raw and processed data
+data/raw/
+data/processed/
+*.csv
+*.zip
