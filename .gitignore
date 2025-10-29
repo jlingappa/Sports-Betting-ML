@@ -20,3 +20,7 @@ data/raw/
 data/processed/
 *.csv
 *.zip
+
+# Allow Python scripts in src/data/
+!src/data/
+!src/data/*.py
