@@ -16,20 +16,22 @@ jobs:
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v3
         with:
-          environment-file: environment.yml         # builds sports-betting-ml env from your YAML
-          activate-environment: sports-betting-ml   # name must match environment.yml "name:"
+          environment-file: environment.yml
+          activate-environment: sports-betting-ml
           auto-activate-base: false
 
       - name: Make data directories
+        shell: bash -l {0}
         run: |
           mkdir -p data/raw
           mkdir -p data/processed
 
       - name: Refresh data from Kaggle and prepare processed data
+        shell: bash -l {0}
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          conda activate sports-betting-ml
           python src/data/refresh_data.py
           python src/data/prepare_data.py
+          

@@ -6,21 +6,23 @@ __pycache__/
 .env/
 venv/
 
-# Data and models
-data/
-models/
-*.csv
-*.zip
-
 # OS
 .DS_Store
 
-# Ignore raw and processed data
-data/raw/
-data/processed/
+# Data files (CSV and ZIP)
 *.csv
 *.zip
 
-# Allow Python scripts in src/data/
-!src/data/
-!src/data/*.py
+# Ignore data directories but allow structure
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Models
+models/
+*.pkl
+*.joblib
+
+# Allow Python scripts in src/
+!src/**/*.py
