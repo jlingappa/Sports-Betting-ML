@@ -9,20 +9,27 @@ venv/
 # OS
 .DS_Store
 
-# Data files (CSV and ZIP)
+# Data files - ignore all CSVs and ZIPs
 *.csv
 *.zip
 
-# Ignore data directories but allow structure
+# Ignore contents of data directories but keep the structure
 data/raw/*
 data/processed/*
+
+# Keep .gitkeep files to preserve directory structure
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
 # Models
-models/
+models/*
+!models/.gitkeep
 *.pkl
 *.joblib
 
-# Allow Python scripts in src/
-!src/**/*.py
+# Utils structure
+utils/*
+!utils/.gitkeep
+
+# Allow all Python scripts
+!**/*.py
